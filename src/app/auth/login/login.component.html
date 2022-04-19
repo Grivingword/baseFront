@@ -1,0 +1,42 @@
+<div class="loginContainer">
+  <mat-card class="card">
+
+    <mat-card-title class="title">
+      <img src="assets/logoAdmin.png" alt="avatar" class="avatar">
+    </mat-card-title>
+
+    <mat-card-subtitle class="subtitle">
+      Inicio de sesion
+    </mat-card-subtitle>
+
+    <mat-card-content>
+
+      <form [formGroup]="fromLogin" (ngSubmit)="onLogin()" autocomplete="off">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="text" formControlName="email" matInput placeholder="Correo" required>
+          <mat-error *ngIf="submitted && form.email.errors">
+            <div *ngIf="fromLogin.controls.email.errors.required">Correo invalido</div>
+          </mat-error>
+          <mat-icon matSuffix>alternate_email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input type="password" formControlName="password" matInput placeholder="Contraseña" required>
+          <mat-error *ngIf="submitted && form.password.errors">
+            <div *ngIf="fromLogin.controls.password.errors.required">Contraseña invalido</div>
+          </mat-error>
+          <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <div class="form-group padding" *ngIf="load">
+          <mat-progress-bar mode="buffer"></mat-progress-bar>
+        </div>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="disableButton">Enviar</button>
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

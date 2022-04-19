@@ -1,0 +1,57 @@
+<mat-toolbar class="mat-elevation-z8" color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>
+      menu
+    </mat-icon>
+  </button>
+  <span> baseProject </span>
+  <span class="example-spacer"></span>
+
+  <a mat-button [routerLink]="['/panel']">Button Add</a>
+
+  <button mat-icon-button [matMenuTriggerFor]="menuDB">
+    <mat-icon>dns</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="exitToApp()">
+    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  </button>
+
+  <mat-menu #menuDB="matMenu">
+    <button mat-menu-item>
+      <span>---</span>
+    </button>
+    <button mat-menu-item>
+      <span>---</span>
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" [opened]="true" mode="side">
+
+    <img class="avatar mat-elevation-z8" src="assets/logoAdmin.png" alt=""/>
+
+    <h4 class="name">{{userData.name}}</h4>
+    <p class="designation">{{userData.email}}</p>
+
+    <mat-divider></mat-divider>
+
+    <div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button>
+      <mat-icon>help</mat-icon>
+      <span>Acerca de</span>
+    </button>
+
+
+  </mat-sidenav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
